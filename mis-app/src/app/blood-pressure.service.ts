@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Bloodpressure } from './models/blood-pressure';
+import { reject } from 'q';
 
+let apiUrl2 = "http://127.0.0.1/bookapi/";
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,7 @@ export class BloodPressureService {
   constructor(
     private http: HttpClient
   ) { }
+
   getBloodPressure(): Observable<Bloodpressure[]> {
     return this.http.get<Bloodpressure[]>(this.apiUrl);
   }
@@ -29,4 +32,5 @@ export class BloodPressureService {
     };
     return this.http.post<Bloodpressure>(this.apiUrl, body, { headers: header });
   }
+
 }

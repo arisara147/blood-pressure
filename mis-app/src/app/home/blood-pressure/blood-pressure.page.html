@@ -13,31 +13,31 @@
       <h3>Measurements</h3>
     </div>
     <div class="body">
-      <form #myForm="ngForm">
+     
         <ion-list>
           <h4>Systolic</h4>
           <ion-item>
             <ion-icon slot="start" name="water"></ion-icon>
-            <ion-input placeholder="SYS" ngModel type="text" name="sys" #sys="ngModel">
+            <ion-input placeholder="SYS" [(ngModel)]="DataBloodPressure.sys">
             </ion-input>
           </ion-item>
           <h4>Diastolic</h4>
           <ion-item>
             <ion-icon slot="start" name="water"></ion-icon>
-            <ion-input placeholder="DIA" ngModel name="dia" type="text" #dia="ngModel">
+            <ion-input placeholder="DIA" [(ngModel)]="DataBloodPressure.dia">
             </ion-input>
           </ion-item>
           <h4>Pulse Rate</h4>
           <ion-item>
             <ion-icon slot="start" name="heart"></ion-icon>
-            <ion-input placeholder="PR" ngModel name="pr" type="text" #pr="ngModel"></ion-input>
+            <ion-input placeholder="PR" [(ngModel)]="DataBloodPressure.pr"></ion-input>
           </ion-item>
         </ion-list>
-      </form>
+     
     </div>
 
     <div>
-      <ion-button size="large" expanded="block" (click)="insert(myForm.value)">บันทึก</ion-button>
+      <ion-button size="large" expanded="block" (click)="addDataBlood()">บันทึก</ion-button>
       <ion-button size="large" expand="block" (click)="goToReport()">ดูข้อมูล</ion-button>
     </div>
   </div>
