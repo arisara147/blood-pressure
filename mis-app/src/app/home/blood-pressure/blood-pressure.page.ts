@@ -22,7 +22,9 @@ export class BloodPressurePage implements OnInit {
     "p_id": null,
     "sys": null,
     "dia": null,
-    "pr": null
+    "pr": null,
+    "rep_status": null,
+    "rep_note": null
   }
   date: any;
   time: any;
@@ -75,20 +77,31 @@ export class BloodPressurePage implements OnInit {
     this.date = this.dd + "/" + this.mm + "/" + this.yyyy;
     console.log(this.date);
     this.time = this.hour + ":" + this.minus;
-
     this.DataBloodPressure.p_id = "test";
-    this.DataBloodPressure.rep_id = 123456;
+    this.DataBloodPressure.rep_id = 0;
     this.DataBloodPressure.rep_date = this.date;
     this.DataBloodPressure.rep_time = this.time;
     console.log(this.DataBloodPressure);
-
+    if (this.DataBloodPressure.sys >= 160 && this.DataBloodPressure.dia >= 100) {
+      this.DataBloodPressure.rep_status = "ระดับอันตราย";
+      this.DataBloodPressure.rep_note = "พบแพทย์โดยด่วน";
+    } else if (this.DataBloodPressure.sys >= 140 && this.DataBloodPressure.dia >= 90) {
+      this.DataBloodPressure.rep_status = "สูงมาก";
+      this.DataBloodPressure.rep_note = "พบแพทย์";
+    } else if (this.DataBloodPressure.sys >= 121 && this.DataBloodPressure.dia >= 80) {
+      this.DataBloodPressure.rep_status = "ค่อนข้างสูง";
+      this.DataBloodPressure.rep_note = "ปรึกษาแพทย์";
+    } else if (this.DataBloodPressure.sys <= 120 && this.DataBloodPressure.dia <= 79) {
+      this.DataBloodPressure.rep_status = "ปกติ";
+      this.DataBloodPressure.rep_note = "ตรวจเช็คความดันโลหิตสม่ำเสมอ";
+    }
     let dataFrom = new FormData();
     dataFrom.append("_Data", JSON.stringify(this.DataBloodPressure));
     dataFrom.append("Function_Name", "addBloodPressure");
     console.log(dataFrom);
-    this.callapi.bloodpressure(dataFrom).then((it) =>{
+    this.callapi.bloodpressure(dataFrom).then((it) => {
       console.log("suscess");
-      
+
     });
   }
 
