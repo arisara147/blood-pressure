@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar class="bar">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>ปรึกษาแพทย์</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item detail *ngFor="let d of doctor" (click)="selectDoctor(d)">
+      <ion-label>
+        <ion-text>
+          {{ d.dr_name }}
+        </ion-text>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

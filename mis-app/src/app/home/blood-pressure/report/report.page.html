@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let rep of report" >
+    <ion-card-header>
+      <ion-card-title>
+        
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>วันที่: {{ rep.rep_date }} </p>
+      <p>เวลา: {{ rep.rep_time }} </p>
+      <p>SYS: {{ rep.sys }} </p>
+      <p>DIA: {{ rep.dia }} </p>
+      <p>PR: {{ rep.pr }} </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

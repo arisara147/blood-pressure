@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar class="bar">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>ตารางนัดหมาย</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let app of appoint">
+    <ion-card-header>
+      <ion-card-title>
+        แพทย์
+      </ion-card-title>
+      <ion-card-subtitle> {{ app.dr_name }} </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>วันที่: {{ app.app_date }} </p>
+      <p>เวลานัด: {{ app.app_time }} </p>
+      <p>คนไข้: {{ app.p_name }} </p>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

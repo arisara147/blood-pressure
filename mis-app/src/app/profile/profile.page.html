@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar class="bar">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>บัญชีผู้ใช้</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="padding">
+  <div class="container">
+    <div class="header">
+      <div class="title">
+        <img src="https://image.flaticon.com/icons/svg/236/236832.svg">
+      </div>
+    </div>
+    <div class="body">
+      <ion-list>
+        <ion-item>
+          <ion-icon slot="start" name="people"></ion-icon>
+          <ion-input type="text" placeholder="ชื่อ-สกุล"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="calendar"></ion-icon>
+          <ion-datetime placeholder="วัน/เดือน/ปีเกิด" displayFormat="D MMMM, YYYY"></ion-datetime>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="female"></ion-icon>
+          <ion-select placeholder="เพศ">
+            <ion-select-option value="1">หญิง</ion-select-option>
+            <ion-select-option value="2">ชาย</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-input type="number">น้ำหนัก:</ion-input>
+        </ion-item>
+        <ion-item> 
+          <ion-input type="number">ส่วนสูง:</ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="call"></ion-icon>
+          <ion-input type="number" placeholder="เบอร์โทรศัพท์"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-icon slot="start" name="pin"></ion-icon>
+          <ion-input type="text" placeholder="ที่อยู่"></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <div class="button" padding>
+        <ion-button size="large" type="submit" expand="block">Save</ion-button>
+      </div>
+    </div>
+  </div>
+</ion-content>
