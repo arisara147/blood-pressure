@@ -8,7 +8,7 @@
 </ion-header>
 
 <ion-content>
-  <ion-card *ngFor="let rep of report" >
+  <ion-card *ngFor="let rep of getReport" >
     <ion-card-header>
       <ion-card-title>
         
@@ -16,11 +16,14 @@
     </ion-card-header>
 
     <ion-card-content>
+      <p>รหัสผู้ป่วย: {{ rep.p_id }}</p>
       <p>วันที่: {{ rep.rep_date }} </p>
       <p>เวลา: {{ rep.rep_time }} </p>
       <p>SYS: {{ rep.sys }} </p>
       <p>DIA: {{ rep.dia }} </p>
       <p>PR: {{ rep.pr }} </p>
+      <p>สถานะ: {{ rep.rep_status }}</p>
+      <p>คำแนะนำ: {{ rep.rep_note }}</p>
     </ion-card-content>
   </ion-card>
 </ion-content>

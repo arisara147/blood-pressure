@@ -33,6 +33,7 @@ export class BloodPressurePage implements OnInit {
   dd: any = new Date().getDate().toString();
   mm: any = new Date().getMonth().toString();
   yyyy: any = new Date().getFullYear().toString();
+  load:any;
 
   constructor(
     private bloodpressreService: BloodPressureService,
@@ -42,32 +43,32 @@ export class BloodPressurePage implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getBloodPressure();
+    // this.getBloodPressure();
 
   }
-  async getBloodPressure() {
+  // async getBloodPressure() {
 
-    this.sub = this.bloodpressreService.getBloodPressure().subscribe(
-      (bloodpressure) => {
-        this.bloodpressure = bloodpressure;
-      },
-    );
-  }
+  //   this.sub = this.bloodpressreService.getBloodPressure().subscribe(
+  //     (bloodpressure) => {
+  //       this.bloodpressure = bloodpressure;
+  //     },
+  //   );
+  // }
 
-  async insert(form: any) {
-    const sys = form.sys;
-    const dia = form.dia;
-    const pr = form.pr;
+  // async insert(form: any) {
+  //   const sys = form.sys;
+  //   const dia = form.dia;
+  //   const pr = form.pr;
 
-    console.log(sys);
-    console.log(dia);
-    console.log(pr);
-    this.bloodpressreService.insert(sys, dia, pr).subscribe(
-      async (bloodpressures: Bloodpressure) => {
-        this.bloodpressures = bloodpressures;
-      }
-    );
-  }
+  //   console.log(sys);
+  //   console.log(dia);
+  //   console.log(pr);
+  //   this.bloodpressreService.insert(sys, dia, pr).subscribe(
+  //     async (bloodpressures: Bloodpressure) => {
+  //       this.bloodpressures = bloodpressures;
+  //     }
+  //   );
+  // }
 
   goToReport() {
     this.navCtrl.navigateForward('/report');
@@ -101,8 +102,9 @@ export class BloodPressurePage implements OnInit {
     console.log(dataFrom);
     this.callapi.bloodpressure(dataFrom).then((it) => {
       console.log("suscess");
-
     });
   }
+    
+  
 
 }

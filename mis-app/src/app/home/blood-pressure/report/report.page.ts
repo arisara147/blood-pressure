@@ -4,6 +4,7 @@ import { NavController, LoadingController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Report } from 'src/app/models/report';
 import { async } from 'q';
+import { CallapiService } from 'src/app/service/callapi.service';
 
 @Component({
   selector: 'app-report',
@@ -18,11 +19,12 @@ export class ReportPage implements OnInit {
   constructor(
     private reportService: ReportService,
     private loadingController: LoadingController,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    public callapi:CallapiService
   ) { }
 
   ngOnInit() {
-    this.getReportList();
+    this.getAllReport();
   }
 
  async  getReportList() {
@@ -43,5 +45,16 @@ export class ReportPage implements OnInit {
         await loading.dismiss();
       },
     );
+  }
+
+  getAllReport(){
+    let dataFrom = new FormData();
+    dataFrom.append("_Data", JSON.stringify(""));
+    dataFrom.append("Function_Name", "getAllBloodPressure");
+    this.callapi.bloodpressure(dataFrom).then((result)=>{
+      this.getReport = result;
+      console.log(result);
+      console.log(this.getReport); 
+    });
   }
 }
