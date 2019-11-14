@@ -3,14 +3,16 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>ตารางนัดหมาย</ion-title>
+    <ion-title>การรักษา</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="padding">
+<ion-content class="padding"><!--หน้านี้สำหรับแพทย์-->
   <div class="container">
-<!--แพทย์และพยาบาลสามารถเพิ่ม ลบ แก้ไขตารางนัดหมาย-->
+    <!--<div class="header">
+      </div>-->
     <div class="body">
+
       <ion-list>
         <h4>ขื่อแพทย์</h4>
         <ion-item>
@@ -22,11 +24,6 @@
         <ion-item>
           <ion-icon slot="start" name="calendar"></ion-icon>
           <ion-datetime placeholder="วันที่" displayFormat="D MMMM, YYYY"></ion-datetime>
-        </ion-item>
-        <h4>เวลา</h4>
-        <ion-item>
-          <ion-icon slot="start" name="time"></ion-icon>
-          <ion-input placeholder="เวลา"></ion-input>
         </ion-item>
         <h4>รายละเอียด</h4>
         <ion-item>
@@ -43,6 +40,7 @@
     </div>
 
     <ion-button size="large" expanded="block">บันทึก</ion-button>
-    <ion-button size="large" expand="block" (click)="goToAppointDetail()">ดูข้อมูล</ion-button>
+    <ion-button size="large" expand="block" (click)="goToTeatmentDetail()">ประวัติการรักษา</ion-button>
   </div>
+
 </ion-content>

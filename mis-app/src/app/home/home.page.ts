@@ -19,4 +19,7 @@ export class HomePage {
   goToBlood() {
     this.navCtrl.navigateForward('/blood-pressure');
   }
+  goToTeatment() {
+    this.navCtrl.navigateForward('/teatment');
+  }
 }

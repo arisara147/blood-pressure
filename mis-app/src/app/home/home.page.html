@@ -10,22 +10,30 @@
 </ion-header>
 
 <ion-content class="padding">
-    <ion-grid>
-        <ion-row>
-          <ion-col>
-              <ion-button size="large" expand="block" (click)="goToConsult()">
-                   ปรึกษาแพทย์
-                   <ion-icon slot="end" name="chatbubbles"></ion-icon>
-              </ion-button>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-            <ion-col>
-                <ion-button size="large" expand="block" (click)="goToBlood()">
-                     ความดันโลหิต
-                    <ion-icon slot="end" name="stats"></ion-icon>
-                </ion-button>
-            </ion-col>
-          </ion-row> 
-      </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-button size="large" expand="block" (click)="goToConsult()">
+          ปรึกษาแพทย์
+          <ion-icon slot="end" name="chatbubbles"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button size="large" expand="block" (click)="goToBlood()">
+          ความดันโลหิต
+          <ion-icon slot="end" name="stats"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button size="large" expand="block" (click)="goToTeatment()">
+          การรักษา
+          <ion-icon slot="end" name="list-box"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

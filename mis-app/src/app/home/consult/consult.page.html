@@ -6,13 +6,22 @@
     <ion-title>ปรึกษาแพทย์</ion-title>
   </ion-toolbar>
 </ion-header>
-
+<!--สำหรับผู้ป่วยจะเห็รายชื่อแพทย์และพยาบาลที่แชทได้-->
+<!--สำหรับแพทย์จะเห็นรายชื่อผู้ป่วยและพยาบาลที่แชทได้-->
+<!--สำหรับพยาบาลจะเห็นรายชื่อผู้ป่วยและแพทย์ที่แชทได้-->
 <ion-content>
   <ion-list>
-    <ion-item detail *ngFor="let d of doctor" (click)="selectDoctor(d)">
+    <ion-item>
       <ion-label>
         <ion-text>
-          {{ d.dr_name }}
+          นายโกวิท โคตะวัน
+        </ion-text>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <ion-label>
+        <ion-text>
+          นางสาวอริศรา สาราษฎร์
         </ion-text>
       </ion-label>
     </ion-item>

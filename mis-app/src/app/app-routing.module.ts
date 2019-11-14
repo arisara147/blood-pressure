@@ -21,7 +21,10 @@ const routes: Routes = [
   { path: 'doctor-detail', loadChildren: './doctor/doctor-detail/doctor-detail.module#DoctorDetailPageModule' },
   { path: 'consult', loadChildren: './home/consult/consult.module#ConsultPageModule' },
   { path: 'chat', loadChildren: './home/consult/chat/chat.module#ChatPageModule' },
-  { path: 'report', loadChildren: './home/blood-pressure/report/report.module#ReportPageModule' },
+  { path: 'report', loadChildren: './home/blood-pressure/report/report.module#ReportPageModule' },  { path: 'teatment', loadChildren: './teatment/teatment.module#TeatmentPageModule' },
+  { path: 'appoint-detail', loadChildren: './appoint-detail/appoint-detail.module#AppointDetailPageModule' },
+  { path: 'teatment-detail', loadChildren: './teatment-detail/teatment-detail.module#TeatmentDetailPageModule' },
+
 ];
 
 @NgModule({

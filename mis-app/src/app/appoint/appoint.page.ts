@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { AppointService } from '../appoint.service';
 import { Appoint } from '../models/appoint';
 import { Subscription } from 'rxjs';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-appoint',
@@ -14,15 +14,13 @@ export class AppointPage implements OnInit {
   sub: Subscription;
 
   constructor(
-    private appointService: AppointService
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
-    this.sub = this.appointService.getAppointAll().subscribe(
-      (appoint) => {
-        this.appoint = appoint;
-      }
-    );
+  }
+  goToAppointDetail() {
+    this.navCtrl.navigateForward('/appoint-detail');
   }
 
 }
