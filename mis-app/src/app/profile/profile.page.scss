@@ -2,59 +2,69 @@
     --background: #00ACC1;
     --color: #FFF;
 }
-ion-content{
+ion-content {
     --offset-top: 0px;
     --offset-bottom: 0px;
-    --backdround: #00BCD4;
+    --background: #00BCD4;
     --color: #FFF;
-    .container{
-        display: flex;
+    .container {
+        display: grid;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        height: 100%;
         padding: 20px 0;
-        .header{
-            flex: 1;
+        .header {
+            flex: 1.5;
             justify-content: center;
-            padding-top: 10px;
-            .title{
-                img{
+            text-align: center;
+            padding-top: 20px;
+            .title {
+                img {
                     height: 100px;
                     width: 100px;
                 }
             }
+            h3 {
+                color: ROYALBLUE;
+            }
         }
-        .body{
-            flex: 1.5;
-            ion-list{
-                --background: none;
-                background: none;
-                margin-bottom: 0!important;
 
-                ion-item{
+       
+        .body {
+            --background: none;
+            background: none;
+            margin-bottom: !important;
+            
+                ion-item {
                     --border-color: transparent!important;
-                    --hihlight-height: 0;
+                    --highlight-height: 0;
                     --background: none;
                     background: #26C6DA;
                     border-radius: 4px;
                     margin-bottom: 10px;
-                    ion-icon{
+                    ion-icon {
                         color: #FFF;
                     }
-                    ion-input{
-                        color: #FFF;
+                    ion-input {
+                        --color: #FFF;
                     }
-                    ion-datetime{
-                        color: #FFF;
+                    ion-datetime {
+                        --color: #FFF;
                     }
-                    ion-select{
+                    ion-select {
                         color: #FFF;
                     }
                 }
-            }
+            
         }
-        .button{
-            --background: royalblue;
+        .footer {
+            display: flex;
+            a {
+                color: ROYALBLUE;
+                font-weight: 500;
+                text-decoration: none;
+            }
         }
     }
 }
