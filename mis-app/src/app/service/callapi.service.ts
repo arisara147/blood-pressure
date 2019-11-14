@@ -9,6 +9,10 @@ let apiUrl = "http://localhost:80/blood-pressure-api/";
 })
 export class CallapiService {
 
+  public getStatus:any;
+  public getid:any;
+  public user;
+  public pwd;
   constructor(public http:HttpClient) { }
 
   bloodpressure(_obj){
@@ -22,4 +26,74 @@ export class CallapiService {
       });
     });
   }
+
+  Doctor(_obj){
+    console.log(_obj);
+    return new Promise((resolve, reject) =>{
+      this.http.post(apiUrl + 'doctor.php', _obj)
+      .subscribe(res => {
+        resolve(res);
+      }, (err) =>{
+        reject(err);
+      });
+    });
+  }
+
+  Admin(_obj){
+    console.log(_obj);
+    return new Promise((resolve, reject) =>{
+      this.http.post(apiUrl + 'admin.php', _obj)
+      .subscribe(res => {
+        resolve(res);
+      }, (err) =>{
+        reject(err);
+      });
+    });
+  }
+
+  Nurse(_obj){
+    console.log(_obj);
+    return new Promise((resolve, reject) =>{
+      this.http.post(apiUrl + 'nurse.php', _obj)
+      .subscribe(res => {
+        resolve(res);
+      }, (err) =>{
+        reject(err);
+      });
+    });
+  }
+
+  
+  Patient(_obj){
+    console.log(_obj);
+    return new Promise((resolve, reject) =>{
+      this.http.post(apiUrl + 'patient.php', _obj)
+      .subscribe(res => {
+        resolve(res);
+      }, (err) =>{
+        reject(err);
+      });
+    });
+  }
+
+  checklogin(_obj) {
+    return new Promise((resolve, reject) => {
+      this.http.post(apiUrl + 'check_login.php', _obj).subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    })
+  }
+
+  profile(_obj) {
+    return new Promise((resolve, reject) => {
+      this.http.post(apiUrl + 'profile.php', _obj).subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    })
+  }
+
 }

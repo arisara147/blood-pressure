@@ -8,13 +8,14 @@ ion-content {
     --background: #00BCD4;
     --color: #FFF;
     .container {
-        display: flex;
+        display: grid;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        height: 100%;
         padding: 20px 0;
         .header {
-            flex: 1;
+            flex: 1.5;
             justify-content: center;
             text-align: center;
             padding-top: 20px;
@@ -24,14 +25,17 @@ ion-content {
                     width: 100px;
                 }
             }
+            h3 {
+                color: ROYALBLUE;
+            }
         }
+
+       
         .body {
-            flex: 1.5;
-            ion-list {
-                --background: none;
-                background: none;
-                margin-bottom: 0!important;
-                
+            --background: none;
+            background: none;
+            margin-bottom: !important;
+            
                 ion-item {
                     --border-color: transparent!important;
                     --highlight-height: 0;
@@ -45,11 +49,14 @@ ion-content {
                     ion-input {
                         --color: #FFF;
                     }
+                    ion-datetime {
+                        --color: #FFF;
+                    }
+                    ion-select {
+                        color: #FFF;
+                    }
                 }
-            }
-        }
-        .button{
-            --background: ROYALBLUE;
+            
         }
         .footer {
             display: flex;
