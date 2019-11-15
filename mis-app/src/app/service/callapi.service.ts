@@ -9,70 +9,70 @@ let apiUrl = "http://localhost:80/blood-pressure-api/";
 })
 export class CallapiService {
 
-  public getStatus:any;
-  public getid:any;
+  public getStatus: any;
+  public getid: any;
   public user;
   public pwd;
-  constructor(public http:HttpClient) { }
+  constructor(public http: HttpClient) { }
 
-  bloodpressure(_obj){
+  bloodpressure(_obj) {
     console.log(_obj);
-    return new Promise((resolve, reject) =>{
+    return new Promise((resolve, reject) => {
       this.http.post(apiUrl + 'blood-pressure.php', _obj)
-      .subscribe(res => {
-        resolve(res);
-      }, (err) =>{
-        reject(err);
-      });
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
     });
   }
 
-  Doctor(_obj){
+  Doctor(_obj) {
     console.log(_obj);
-    return new Promise((resolve, reject) =>{
+    return new Promise((resolve, reject) => {
       this.http.post(apiUrl + 'doctor.php', _obj)
-      .subscribe(res => {
-        resolve(res);
-      }, (err) =>{
-        reject(err);
-      });
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
     });
   }
 
-  Admin(_obj){
+  Admin(_obj) {
     console.log(_obj);
-    return new Promise((resolve, reject) =>{
+    return new Promise((resolve, reject) => {
       this.http.post(apiUrl + 'admin.php', _obj)
-      .subscribe(res => {
-        resolve(res);
-      }, (err) =>{
-        reject(err);
-      });
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
     });
   }
 
-  Nurse(_obj){
+  Nurse(_obj) {
     console.log(_obj);
-    return new Promise((resolve, reject) =>{
+    return new Promise((resolve, reject) => {
       this.http.post(apiUrl + 'nurse.php', _obj)
-      .subscribe(res => {
-        resolve(res);
-      }, (err) =>{
-        reject(err);
-      });
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
     });
   }
 
-  
-  Patient(_obj){
+
+  Patient(_obj) {
     console.log(_obj);
-    return new Promise((resolve, reject) =>{
+    return new Promise((resolve, reject) => {
       this.http.post(apiUrl + 'patient.php', _obj)
-      .subscribe(res => {
-        resolve(res);
-      }, (err) =>{
-        reject(err);
-      });
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
+        });
     });
   }
 
@@ -95,5 +95,13 @@ export class CallapiService {
       });
     })
   }
-
+  news(_obj) {
+    return new Promise((resolve, reject) => {
+      this.http.post(apiUrl + 'news.php', _obj).subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    })
+  }
 }

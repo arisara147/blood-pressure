@@ -83,7 +83,7 @@ export class LoginPage implements OnInit {
         this.callApi.pwd = this.dataDoctor.dr_passwd;
         this.callApi.getStatus = "doctor";
         this.callApi.getid = this.dataDoctor.dr_id;
-        this.router.navigate(['/doctor']);
+        this.router.navigate(['/home']);
       }else {
         console.log("bye");
 
@@ -103,7 +103,7 @@ export class LoginPage implements OnInit {
         this.callApi.pwd = this.dataNurse.nurse_passwd;
         this.callApi.getid = this.dataNurse.nurse_id;
         this.callApi.getStatus = "nurse";
-        this.router.navigate(['/appoint']);
+        this.router.navigate(['/home']);
       }else {
         console.log("bye");
 
