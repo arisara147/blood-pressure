@@ -30,9 +30,6 @@ export class LoginPage implements OnInit {
     "nurse_passwd": ""
   }
 
-
-
-
   DataLoginLog = {
     "login_username": null,
     "login_password": null,
@@ -46,7 +43,11 @@ export class LoginPage implements OnInit {
   dataDoctor: any;
   dataNurse: any;
   dataPatient: any;
-  constructor(public navCtrl: NavController, public callApi: CallapiService, public router: Router) { }
+  constructor(
+    public navCtrl: NavController,
+    public callApi: CallapiService,
+    public router: Router
+    ) { }
 
   ngOnInit() {
   }
@@ -95,14 +96,9 @@ export class LoginPage implements OnInit {
         this.callApi.pwd = this.dataDoctor.dr_passwd;
         this.callApi.getStatus = "doctor";
         this.callApi.getid = this.dataDoctor.dr_id;
-<<<<<<< HEAD
-        this.router.navigate(['/home']);
-      }else {
-=======
         this.loginLog(this.callApi.user, this.callApi.pwd, this.dataDoctor.dr_name, this.callApi.getStatus);
         this.router.navigate(['/doctor']);
       } else {
->>>>>>> f4788d16f183b4659ed84bb347b5a9a5074c9c68
         console.log("bye");
 
       }
@@ -121,14 +117,9 @@ export class LoginPage implements OnInit {
         this.callApi.pwd = this.dataNurse.nurse_passwd;
         this.callApi.getid = this.dataNurse.nurse_id;
         this.callApi.getStatus = "nurse";
-<<<<<<< HEAD
-        this.router.navigate(['/home']);
-      }else {
-=======
         this.loginLog(this.callApi.user, this.callApi.pwd, this.dataNurse.nurse_name, this.callApi.getStatus);
         this.router.navigate(['/appoint']);
       } else {
->>>>>>> f4788d16f183b4659ed84bb347b5a9a5074c9c68
         console.log("bye");
 
       }
@@ -153,7 +144,7 @@ export class LoginPage implements OnInit {
         console.log("bye");
 
       }
-    })
+    });
 
   }
 

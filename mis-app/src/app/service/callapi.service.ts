@@ -83,7 +83,7 @@ export class CallapiService {
       }, (err) => {
         reject(err);
       });
-    })
+    });
   }
 
   profile(_obj) {
@@ -93,7 +93,7 @@ export class CallapiService {
       }, (err) => {
         reject(err);
       });
-    })
+    });
   }
   news(_obj) {
     return new Promise((resolve, reject) => {
@@ -102,6 +102,6 @@ export class CallapiService {
       }, (err) => {
         reject(err);
       });
-    })
+    });
   }
 }
