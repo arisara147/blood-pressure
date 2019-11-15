@@ -63,7 +63,7 @@
         </div>
 
         <div class="button" padding *ngIf="buttonStatus == 2">
-          <ion-button size="large" expand="block" (click)="change()">บันทึก</ion-button>
+          <ion-button size="large" expand="block" (click)="editProfileDoctor()">บันทึก</ion-button>
         </div>
 
       </div>
@@ -80,15 +80,15 @@
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="people"></ion-icon>
-          <ion-input type="text" placeholder="ชื่อ-สกุล" [(ngModel)]="dataAdmin.admin_name"></ion-input>
+          <ion-input type="text" placeholder="ชื่อ-สกุล" [(ngModel)]="dataAdmin.admin_name" [readonly]="isValid"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="person"></ion-icon>
-          <ion-input placeholder="Username" [(ngModel)]="dataAdmin.admin_user"></ion-input>
+          <ion-input placeholder="Username" [(ngModel)]="dataAdmin.admin_user" [readonly]="isValid"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="lock"></ion-icon>
-          <ion-input placeholder="password" type="password" [(ngModel)]="dataAdmin.admin_passwd"></ion-input>
+          <ion-input placeholder="password" type="password" [(ngModel)]="dataAdmin.admin_passwd" [readonly]="isValid"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="female"></ion-icon>
@@ -99,19 +99,19 @@
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="call"></ion-icon>
-          <ion-input type="number" placeholder="เบอร์โทรศัพท์" [(ngModel)]="dataAdmin.admin_tell"></ion-input>
+          <ion-input type="number" placeholder="เบอร์โทรศัพท์" [(ngModel)]="dataAdmin.admin_tell" [readonly]="isValid"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="pin"></ion-icon>
-          <ion-input type="text" placeholder="ที่อยู่" [(ngModel)]="dataAdmin.admin_address"></ion-input>
+          <ion-input type="text" placeholder="ที่อยู่" [(ngModel)]="dataAdmin.admin_address" [readonly]="isValid"></ion-input>
         </ion-item>
 
-        <div class="button" padding>
-          <ion-button size="large" expand="block">แก้ไข</ion-button>
+        <div class="button" padding *ngIf="buttonStatus == 1">
+          <ion-button size="large" expand="block" (click)="change()">แก้ไข</ion-button>
         </div>
 
-        <div class="button" padding>
-          <ion-button size="large" expand="block">บันทึก</ion-button>
+        <div class="button" padding *ngIf="buttonStatus == 2">
+          <ion-button size="large" expand="block" (click)="editProfileAdmin()">บันทึก</ion-button>
         </div>
       </div>
 
@@ -126,20 +126,20 @@
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="person"></ion-icon>
-          <ion-input placeholder="ชื่อ-นามสกุล" type="text" [(ngModel)]="dataPatient.p_name"></ion-input>
+          <ion-input placeholder="ชื่อ-นามสกุล" type="text" [(ngModel)]="dataPatient.p_name" [readonly]="isValid"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="lock"></ion-icon>
-          <ion-input placeholder="Username" type="text" [(ngModel)]="dataPatient.p_user"></ion-input>
+          <ion-input placeholder="Username" type="text" [(ngModel)]="dataPatient.p_user" [readonly]="isValid"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="lock"></ion-icon>
-          <ion-input placeholder="Password" type="password" [(ngModel)]="dataPatient.p_passwd"></ion-input>
+          <ion-input placeholder="Password" type="password" [(ngModel)]="dataPatient.p_passwd" [readonly]="isValid"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="calendar"></ion-icon>
           <ion-datetime placeholder="วัน/เดือน/ปีเกิด" displayFormat="D MMMM, YYYY"
-            [(ngModel)]="dataPatient.p_birthDate"></ion-datetime>
+            [(ngModel)]="dataPatient.p_birthDate" [readonly]="isValid"></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="female"></ion-icon>
@@ -149,26 +149,26 @@
           </ion-select>
         </ion-item>
         <ion-item>
-          <ion-input type="number" [(ngModel)]="dataPatient.p_weight">น้ำหนัก:</ion-input>
+          <ion-input type="number" [(ngModel)]="dataPatient.p_weight" [readonly]="isValid">น้ำหนัก:</ion-input>
         </ion-item>
         <ion-item>
-          <ion-input type="number" [(ngModel)]="dataPatient.p_height">ส่วนสูง:</ion-input>
+          <ion-input type="number" [(ngModel)]="dataPatient.p_height" [readonly]="isValid">ส่วนสูง:</ion-input>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="call"></ion-icon>
-          <ion-input type="number" placeholder="เบอร์โทรศัพท์" [(ngModel)]="dataPatient.p_tell"></ion-input>
+          <ion-input type="number" placeholder="เบอร์โทรศัพท์" [(ngModel)]="dataPatient.p_tell" [readonly]="isValid"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="pin"></ion-icon>
-          <ion-input type="text" placeholder="ที่อยู่" [(ngModel)]="dataPatient.p_address"></ion-input>
+          <ion-input type="text" placeholder="ที่อยู่" [(ngModel)]="dataPatient.p_address" [readonly]="isValid"></ion-input>
         </ion-item>
 
-        <div class="button" padding>
-          <ion-button size="large" expand="block">แก้ไข</ion-button>
+        <div class="button" padding *ngIf="buttonStatus == 1">
+          <ion-button size="large" expand="block" (click)="change()">แก้ไข</ion-button>
         </div>
 
-        <div class="button" padding>
-          <ion-button size="large" expand="block">บันทึก</ion-button>
+        <div class="button" padding *ngIf="buttonStatus == 2">
+          <ion-button size="large" expand="block" (click)="editProfilePatient()">บันทึก</ion-button>
         </div>
 
       </div>
@@ -184,15 +184,15 @@
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="people"></ion-icon>
-          <ion-input type="text" placeholder="ชื่อ-สกุล" [(ngModel)]="dataNurse.nurse_name"></ion-input>
+          <ion-input type="text" placeholder="ชื่อ-สกุล" [(ngModel)]="dataNurse.nurse_name" [readonly]="isValid"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="person"></ion-icon>
-          <ion-input placeholder="Username" [(ngModel)]="dataNurse.nurse_user"></ion-input>
+          <ion-input placeholder="Username" [(ngModel)]="dataNurse.nurse_user" [readonly]="isValid"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="lock"></ion-icon>
-          <ion-input placeholder="password" type="password" [(ngModel)]="dataNurse.nurse_passwd"></ion-input>
+          <ion-input placeholder="password" type="password" [(ngModel)]="dataNurse.nurse_passwd" [readonly]="isValid"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="female"></ion-icon>
@@ -204,19 +204,19 @@
 
         <ion-item>
           <ion-icon slot="start" name="call"></ion-icon>
-          <ion-input type="number" placeholder="เบอร์โทรศัพท์" [(ngModel)]="dataNurse.nurse_tell"></ion-input>
+          <ion-input type="number" placeholder="เบอร์โทรศัพท์" [(ngModel)]="dataNurse.nurse_tell" [readonly]="isValid"></ion-input>
         </ion-item>
         <ion-item>
           <ion-icon slot="start" name="pin"></ion-icon>
-          <ion-input type="text" placeholder="ที่อยู่" [(ngModel)]="dataNurse.nurse_address"></ion-input>
+          <ion-input type="text" placeholder="ที่อยู่" [(ngModel)]="dataNurse.nurse_address" [readonly]="isValid"></ion-input>
         </ion-item>
 
-        <div class="button" padding>
-          <ion-button size="large" expand="block">แก้ไข</ion-button>
+        <div class="button" padding *ngIf="buttonStatus == 1">
+          <ion-button size="large" expand="block" (click)="change()">แก้ไข</ion-button>
         </div>
 
-        <div class="button" padding>
-          <ion-button size="large" expand="block">บันทึก</ion-button>
+        <div class="button" padding *ngIf="buttonStatus == 2">
+          <ion-button size="large" expand="block" (click)="editProfileNurse()">บันทึก</ion-button>
         </div>
 
       </div>

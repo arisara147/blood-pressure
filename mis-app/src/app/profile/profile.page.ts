@@ -58,8 +58,8 @@ export class ProfilePage implements OnInit {
 
   dataAdmin: any = {};
   dataDoctor: any;
-  dataNurse: any = {};
-  dataPatient: any = {};
+  dataNurse: any;
+  dataPatient: any;
   checkStatus: any;
   isValid: boolean;
   buttonStatus: any;
@@ -96,7 +96,7 @@ export class ProfilePage implements OnInit {
 
 
   ngOnInit() {
- 
+
   }
 
   change() {
@@ -107,11 +107,11 @@ export class ProfilePage implements OnInit {
     } else if (this.buttonStatus == "2") {
       this.isValid = true;
       this.buttonStatus = "1";
- 
-    } 
+
+    }
     console.log(this.isValid);
     console.log(this.buttonStatus);
-    
+
   }
 
   getProfileDoctorById() {
@@ -151,6 +151,42 @@ export class ProfilePage implements OnInit {
     this.callApi.profile(dataForm).then((result) => {
       this.dataPatient = result[0];
       console.log(this.dataPatient);
+    });
+  }
+
+  editProfileDoctor() {
+    let dataForm = new FormData();
+    dataForm.append("_Data", JSON.stringify(this.dataDoctor));
+    dataForm.append("Function_Name", "updateProfileDoctor");
+    this.callApi.profile(dataForm).then((result) => {
+      console.log(result);
+    });
+  }
+
+  editProfileNurse() {
+    let dataForm = new FormData();
+    dataForm.append("_Data", JSON.stringify(this.dataNurse));
+    dataForm.append("Function_Name", "updateProfileNurse");
+    this.callApi.profile(dataForm).then((result) => {
+      console.log(result);
+    });
+  }
+
+  editProfilePatient() {
+    let dataForm = new FormData();
+    dataForm.append("_Data", JSON.stringify(this.dataPatient));
+    dataForm.append("Function_Name", "updateProfilePatient");
+    this.callApi.profile(dataForm).then((result) => {
+      console.log(result);
+    });
+  }
+
+  editProfileAdmin() {
+    let dataForm = new FormData();
+    dataForm.append("_Data", JSON.stringify(this.dataAdmin));
+    dataForm.append("Function_Name", "updateProfileAdmin");
+    this.callApi.profile(dataForm).then((result) => {
+      console.log(result);
     });
   }
 

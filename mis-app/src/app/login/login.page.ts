@@ -29,6 +29,17 @@ export class LoginPage implements OnInit {
     "nurse_user": "",
     "nurse_passwd": ""
   }
+
+
+
+
+  DataLoginLog = {
+    "login_username": null,
+    "login_password": null,
+    "login_name": null,
+    "login_type": null
+  }
+
   username: any;
   password: any;
   dataAdmin: any;
@@ -63,8 +74,9 @@ export class LoginPage implements OnInit {
         this.callApi.pwd = this.dataAdmin.admin_passwd;
         this.callApi.getStatus = "admin";
         this.callApi.getid = this.dataAdmin.admin_id;
+        this.loginLog(this.callApi.user, this.callApi.pwd, this.dataAdmin.admin_name, this.callApi.getStatus);
         this.router.navigate(['/home']);
-      }else {
+      } else {
         console.log("bye");
 
       }
@@ -83,8 +95,9 @@ export class LoginPage implements OnInit {
         this.callApi.pwd = this.dataDoctor.dr_passwd;
         this.callApi.getStatus = "doctor";
         this.callApi.getid = this.dataDoctor.dr_id;
+        this.loginLog(this.callApi.user, this.callApi.pwd, this.dataDoctor.dr_name, this.callApi.getStatus);
         this.router.navigate(['/doctor']);
-      }else {
+      } else {
         console.log("bye");
 
       }
@@ -103,8 +116,9 @@ export class LoginPage implements OnInit {
         this.callApi.pwd = this.dataNurse.nurse_passwd;
         this.callApi.getid = this.dataNurse.nurse_id;
         this.callApi.getStatus = "nurse";
+        this.loginLog(this.callApi.user, this.callApi.pwd, this.dataNurse.nurse_name, this.callApi.getStatus);
         this.router.navigate(['/appoint']);
-      }else {
+      } else {
         console.log("bye");
 
       }
@@ -123,6 +137,7 @@ export class LoginPage implements OnInit {
         this.callApi.pwd = this.dataPatient.p_passwd;
         this.callApi.getid = this.dataPatient.p_id;
         this.callApi.getStatus = "patient";
+        this.loginLog(this.callApi.user, this.callApi.pwd, this.dataPatient._name, this.callApi.getStatus);
         this.router.navigate(['/home']);
       } else {
         console.log("bye");
@@ -131,4 +146,21 @@ export class LoginPage implements OnInit {
     })
 
   }
+
+  loginLog(username, password, name, type) {
+    this.DataLoginLog.login_name = name;
+    this.DataLoginLog.login_password = password;
+    this.DataLoginLog.login_username = username;
+    this.DataLoginLog.login_type = type;
+    console.log(this.DataLoginLog);
+    let dataFrom = new FormData();
+    dataFrom.append("_Data", JSON.stringify(this.DataLoginLog));
+    dataFrom.append("Function_Name", "AddloginLog");
+    console.log(dataFrom);
+    this.callApi.checklogin(dataFrom).then((res) => {
+      console.log(res);
+
+    });
+  }
+
 }
