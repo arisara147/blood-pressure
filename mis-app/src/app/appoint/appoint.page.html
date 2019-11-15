@@ -15,34 +15,37 @@
         <h4>ขื่อแพทย์</h4>
         <ion-item>
           <ion-icon slot="start" name="person"></ion-icon>
-          <ion-input placeholder="ชื่อ-สกุล">
-          </ion-input>
+          <ion-select placeholder="เลือกชื่อแพทย์" [(ngModel)]="dataAppoint.dr_name" okText="Okay" cancelText="Dismiss">
+            <ion-select-option *ngFor="let item of getDoctor" value="{{ item.dr_name }}">{{ item.dr_name }}</ion-select-option>
+          </ion-select>
         </ion-item>
         <h4>วันที่</h4>
         <ion-item>
           <ion-icon slot="start" name="calendar"></ion-icon>
-          <ion-datetime placeholder="วันที่" displayFormat="D MMMM, YYYY"></ion-datetime>
+          <ion-datetime [(ngModel)]="dataAppoint.app_date" placeholder="วันที่" displayFormat="D MMMM, YYYY"></ion-datetime>
         </ion-item>
         <h4>เวลา</h4>
         <ion-item>
           <ion-icon slot="start" name="time"></ion-icon>
-          <ion-input placeholder="เวลา"></ion-input>
+          <ion-datetime [(ngModel)]="dataAppoint.app_time" placeholder="วันที่" displayFormat="HH:mm"></ion-datetime>
         </ion-item>
         <h4>รายละเอียด</h4>
         <ion-item>
           <ion-icon slot="start" name="clipboard"></ion-icon>
-          <ion-input placeholder="รายละเอียด"></ion-input>
+          <ion-input [(ngModel)]="dataAppoint.app_detail" placeholder="รายละเอียด"></ion-input>
         </ion-item>
         <h4>ชื่อผู้ป่วย</h4>
         <ion-item>
           <ion-icon slot="start" name="person"></ion-icon>
-          <ion-input placeholder="ชื่อ-สกุล"></ion-input>
+          <ion-select placeholder="เลือกผู้ป่วย" [(ngModel)]="dataAppoint.p_name" okText="Okay" cancelText="Dismiss">
+            <ion-select-option *ngFor="let item of getPatient" value="{{ item.p_name }}">{{ item.p_name }}</ion-select-option>
+          </ion-select>
         </ion-item>
       </ion-list>
 
     </div>
 
-    <ion-button size="large" expanded="block">บันทึก</ion-button>
+    <ion-button size="large" (click)="Addappoint()" expanded="block">บันทึก</ion-button>
     <ion-button size="large" expand="block" (click)="goToAppointDetail()">ดูข้อมูล</ion-button>
   </div>
 </ion-content>
