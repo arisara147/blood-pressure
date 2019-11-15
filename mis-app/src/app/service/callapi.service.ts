@@ -104,4 +104,15 @@ export class CallapiService {
       });
     });
   }
+
+  appoint(_obj) {
+    return new Promise((resolve, reject) => {
+      this.http.post(apiUrl + 'appoint.php', _obj).subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    })
+  }
+
 }
