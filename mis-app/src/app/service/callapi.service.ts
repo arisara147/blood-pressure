@@ -112,7 +112,17 @@ export class CallapiService {
       }, (err) => {
         reject(err);
       });
-    })
+    });
+  }
+
+  treatment(_obj) {
+    return new Promise((resolve, reject) => {
+      this.http.post(apiUrl + 'treatment.php', _obj).subscribe(res => {
+        resolve(res);
+      }, (err) => {
+        reject(err);
+      });
+    });
   }
 
 }

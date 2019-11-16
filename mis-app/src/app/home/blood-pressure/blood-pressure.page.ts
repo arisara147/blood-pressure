@@ -3,7 +3,6 @@ import { LoadingController, NavController } from '@ionic/angular';
 import { Bloodpressure } from 'src/app/models/blood-pressure';
 import { Subscription } from 'rxjs';
 import { BloodPressureService } from 'src/app/blood-pressure.service';
-import { FormsModule } from '@angular/forms';
 import { CallapiService } from 'src/app/service/callapi.service';
 
 @Component({
@@ -33,7 +32,7 @@ export class BloodPressurePage implements OnInit {
   dd: any = new Date().getDate().toString();
   mm: any = new Date().getMonth().toString();
   yyyy: any = new Date().getFullYear().toString();
-  load:any;
+  load: any;
 
   constructor(
     private bloodpressreService: BloodPressureService,
@@ -83,19 +82,39 @@ export class BloodPressurePage implements OnInit {
     this.DataBloodPressure.rep_date = this.date;
     this.DataBloodPressure.rep_time = this.time;
     console.log(this.DataBloodPressure);
-    if (this.DataBloodPressure.sys >= 160 && this.DataBloodPressure.dia >= 100) {
+    if (this.DataBloodPressure.sys >= 180 && this.DataBloodPressure.dia >= 110) {
       this.DataBloodPressure.rep_status = "ระดับอันตราย";
-      this.DataBloodPressure.rep_note = "พบแพทย์โดยด่วน";
-    } else if (this.DataBloodPressure.sys >= 140 && this.DataBloodPressure.dia >= 90) {
-      this.DataBloodPressure.rep_status = "สูงมาก";
+      this.DataBloodPressure.rep_note = "พบแพทย์ด่วน";
+    } else if (this.DataBloodPressure.sys >= 160 && this.DataBloodPressure.dia >= 100) {
+      this.DataBloodPressure.rep_status = "ระดับสูงมาก";
       this.DataBloodPressure.rep_note = "พบแพทย์";
-    } else if (this.DataBloodPressure.sys >= 121 && this.DataBloodPressure.dia >= 80) {
+    } else if (this.DataBloodPressure.sys >= 140 && this.DataBloodPressure.dia >= 90) {
+      this.DataBloodPressure.rep_status = "ระดับสูง";
+      this.DataBloodPressure.rep_note = "พบแพทย์";
+    } else if (this.DataBloodPressure.sys >= 130 && this.DataBloodPressure.dia >= 85) {
       this.DataBloodPressure.rep_status = "ค่อนข้างสูง";
       this.DataBloodPressure.rep_note = "ปรึกษาแพทย์";
+    } else if (this.DataBloodPressure.sys >= 121 && this.DataBloodPressure.dia >= 80) {
+      this.DataBloodPressure.rep_status = "ระดับปกติ";
+      this.DataBloodPressure.rep_note = "ตรวจเช็คสม่ำเสมอ";
     } else if (this.DataBloodPressure.sys <= 120 && this.DataBloodPressure.dia <= 79) {
-      this.DataBloodPressure.rep_status = "ปกติ";
-      this.DataBloodPressure.rep_note = "ตรวจเช็คความดันโลหิตสม่ำเสมอ";
+      this.DataBloodPressure.rep_status = "เหมาะสม";
+      this.DataBloodPressure.rep_note = "ตรวจเช็คสม่ำเสมอ";
     }
+    //
+    //if (this.DataBloodPressure.sys >= 160 && this.DataBloodPressure.dia >= 100) {
+    //this.DataBloodPressure.rep_status = "ระดับอันตราย";
+    //this.DataBloodPressure.rep_note = "พบแพทย์โดยด่วน";
+    //} else if (this.DataBloodPressure.sys >= 140 && this.DataBloodPressure.dia >= 90) {
+    //this.DataBloodPressure.rep_status = "สูงมาก";
+    // this.DataBloodPressure.rep_note = "พบแพทย์";
+    //} else if (this.DataBloodPressure.sys >= 121 && this.DataBloodPressure.dia >= 80) {
+    //this.DataBloodPressure.rep_status = "ค่อนข้างสูง";
+    // this.DataBloodPressure.rep_note = "ปรึกษาแพทย์";
+    //} else if (this.DataBloodPressure.sys <= 120 && this.DataBloodPressure.dia <= 79) {
+    // this.DataBloodPressure.rep_status = "ปกติ";
+    //  this.DataBloodPressure.rep_note = "ตรวจเช็คความดันโลหิตสม่ำเสมอ";
+    // }
     let dataFrom = new FormData();
     dataFrom.append("_Data", JSON.stringify(this.DataBloodPressure));
     dataFrom.append("Function_Name", "addBloodPressure");
@@ -104,7 +123,4 @@ export class BloodPressurePage implements OnInit {
       console.log("suscess");
     });
   }
-    
-  
-
-}
+} 

@@ -3,7 +3,6 @@ import { ReportService } from 'src/app/report.service';
 import { NavController, LoadingController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Report } from 'src/app/models/report';
-import { async } from 'q';
 import { CallapiService } from 'src/app/service/callapi.service';
 
 @Component({
