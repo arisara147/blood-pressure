@@ -24,6 +24,8 @@ const routes: Routes = [
   { path: 'report', loadChildren: './home/blood-pressure/report/report.module#ReportPageModule' },  { path: 'teatment', loadChildren: './teatment/teatment.module#TeatmentPageModule' },
   { path: 'appoint-detail', loadChildren: './appoint-detail/appoint-detail.module#AppointDetailPageModule' },
   { path: 'teatment-detail', loadChildren: './teatment-detail/teatment-detail.module#TeatmentDetailPageModule' },
+  { path: 'patient-detail', loadChildren: './patient-detail/patient-detail.module#PatientDetailPageModule' },
+  { path: 'patient-detail2', loadChildren: './patient-detail2/patient-detail2.module#PatientDetail2PageModule' },
 
 ];
 

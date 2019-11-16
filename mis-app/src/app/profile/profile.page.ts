@@ -67,24 +67,24 @@ export class ProfilePage implements OnInit {
   constructor(public activate: ActivatedRoute, public callApi: CallapiService) {
     console.log(this.callApi.getid);
     this.checkStatus = this.callApi.getStatus;
-    if (this.checkStatus == "doctor") {
+    if (this.checkStatus == "1") {
       this.DataDoctor.dr_id = this.callApi.getid;
       this.checkStatus = 1;
       this.getProfileDoctorById();
     }
     else if (this.checkStatus == "admin") {
       this.DataAdmin.admin_id = this.callApi.getid;
-      this.checkStatus = 2;
+      this.checkStatus = 4;
       this.getProfileAdminById();
     }
-    else if (this.checkStatus == "nurse") {
+    else if (this.checkStatus == "2") {
       this.DataNurse.nurse_id = this.callApi.getid;
-      this.checkStatus = 3;
+      this.checkStatus = 2;
       this.getProfileNurseById();
     }
-    else if (this.checkStatus == "patient") {
+    else if (this.checkStatus == "3") {
       this.DataPatient.p_id = this.callApi.getid;
-      this.checkStatus = 4;
+      this.checkStatus = 3;
       this.getProfilePatientById();
     }
     this.buttonStatus = "1";

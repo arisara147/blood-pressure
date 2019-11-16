@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-toolbar class="bar">
+      <ion-buttons slot="start">
+        <ion-menu-button></ion-menu-button>
+      </ion-buttons>
+      <ion-title *ngIf="checkStatus == 3">แพทย์</ion-title>
+      <ion-title *ngIf="checkStatus == 1">ผู้ป่วย</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+
+<ion-content class="body">
+
+    <div *ngIf="checkStatus == 2" >
+  <ion-searchbar (ionChange)="getItem($event)"></ion-searchbar>
+
+  <ion-row>
+      <ion-col size="3">
+          <ion-button [routerLink]="['/doctor']">รายชื่อแพทย์</ion-button>
+        </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col padding>
+          ชื่อผู้ป่วย
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+            <ion-item *ngFor="let p of listPateint">
+                <ion-label>{{p.p_name}}</ion-label>
+                <ion-col size="3">
+                    <ion-button (click)="detailPatient(p.p_id)">ดูข้อมูล</ion-button>
+                  </ion-col>
+              </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <!-- <ion-list>
+      <ion-item>
+        <ion-label>
+          <ion-text>นายโกวิท โคตะวัน</ion-text>
+          สำหรับเมื่อคลิกที่ชื่อหมอจะไปที่หน้าdoctor-detail เพื่อดูข้อมูลการติด่อ
+          สำหรับแพทย์จะแสดงรายชื่อผู้ป่วยและดูประวัติส่วนตัวของผู้ป่วยได้
+         สำหรับพยาบาลจะแสดงรายชื่อแพทย์และผู้ป่วย เพื่อไปที่หน้าแชท 
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>
+          <ion-text>นางสาวอริศรา สาราษฎร์</ion-text>
+        </ion-label>
+      </ion-item>
+    </ion-list> -->
+</ion-content>

@@ -93,7 +93,7 @@ export class LoginPage implements OnInit {
       if (this.dataDoctor.dr_user == this.username && this.dataDoctor.dr_passwd == this.password) {
         this.callApi.user = this.dataDoctor.dr_user;
         this.callApi.pwd = this.dataDoctor.dr_passwd;
-        this.callApi.getStatus = "doctor";
+        this.callApi.getStatus = "1";
         this.callApi.getid = this.dataDoctor.dr_id;
         this.loginLog(this.callApi.user, this.callApi.pwd, this.dataDoctor.dr_name, this.callApi.getStatus);
         this.router.navigate(['/doctor']);
@@ -115,7 +115,7 @@ export class LoginPage implements OnInit {
         this.callApi.user = this.dataNurse.nurse_user;
         this.callApi.pwd = this.dataNurse.nurse_passwd;
         this.callApi.getid = this.dataNurse.nurse_id;
-        this.callApi.getStatus = "nurse";
+        this.callApi.getStatus = "2";
         this.loginLog(this.callApi.user, this.callApi.pwd, this.dataNurse.nurse_name, this.callApi.getStatus);
         this.router.navigate(['/appoint']);
       } else {
@@ -136,7 +136,7 @@ export class LoginPage implements OnInit {
         this.callApi.user = this.dataPatient.p_user;
         this.callApi.pwd = this.dataPatient.p_passwd;
         this.callApi.getid = this.dataPatient.p_id;
-        this.callApi.getStatus = "patient";
+        this.callApi.getStatus = "3";
         this.loginLog(this.callApi.user, this.callApi.pwd, this.dataPatient._name, this.callApi.getStatus);
         this.router.navigate(['/home']);
       } else {
