@@ -121,12 +121,12 @@ export class AppointPage implements OnInit {
   }
 
   checkDoctor(){
-    if (this.callapi.getStatus == "doctor") {
+    if (this.callapi.getStatus == "1") {
       this.checkStatus = 1;
       this.dataAppoint.dr_name = this.callapi.nameDoctor;
       this.isReadonly = true;
     }
-    if (this.callapi.getStatus == "patient") {
+    if (this.callapi.getStatus == "3") {
       this.checkStatus = 2;
       this.getAppointBypid();
     }
