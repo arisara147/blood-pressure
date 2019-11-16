@@ -34,15 +34,13 @@
     <ion-col padding>
       ชื่อผู้ป่วย
     </ion-col>
-
     <ion-row>
-
       <ion-col>
         <ion-list>
           <ion-item *ngFor="let p of listPateint">
             <ion-label>{{p.p_name}}</ion-label>
             <ion-col size="3">
-              <ion-button (click)="detailPateint(p.p_name)">ดูข้อมูล</ion-button>
+              <ion-button (click)="detailPateint(p.p_id)">ดูข้อมูล</ion-button>
             </ion-col>
           </ion-item>
         </ion-list>

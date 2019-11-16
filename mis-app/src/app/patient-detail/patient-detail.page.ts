@@ -26,7 +26,7 @@ export class PatientDetailPage implements OnInit {
     console.log(this.checkStatus);
     let dataFrom = new FormData();
     dataFrom.append("_Data", JSON.stringify(""));
-    dataFrom.append("Function_Name", "getPateintAll");
+    dataFrom.append("Function_Name", "getallPatient");
     this.callApi.Patient(dataFrom).then((result) => {
       this.listPateint = result;
       console.log(this.listPateint);
@@ -38,7 +38,7 @@ export class PatientDetailPage implements OnInit {
     console.log(this.checkStatus);
     let dataFrom = new FormData();
     dataFrom.append("_Data", JSON.stringify(""));
-    dataFrom.append("Function_Name", "getDoctorAll");
+    dataFrom.append("Function_Name", "getallDoctor");
     this.callApi.Doctor(dataFrom).then((result) => {
       this.listDoctor = result;
       console.log(this.listDoctor);
