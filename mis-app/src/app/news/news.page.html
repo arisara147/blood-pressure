@@ -9,5 +9,17 @@
 
 
 <ion-content>
+  <ion-card *ngFor="let news of getNews">
+    <ion-card-header>
+      <ion-card-title>
+        <p>หัวข้อข่าว: {{ news.news_name }} </p>
+      </ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <p>เนื้อหาข่าว: {{ news.news_detail }} </p>
+      
+    </ion-card-content>
+  </ion-card>
 
 </ion-content>

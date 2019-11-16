@@ -47,14 +47,14 @@ export class ReportPage implements OnInit {
     );
   }
 
-  getAllReport(){
+  getAllReport() {
     let dataFrom = new FormData();
     dataFrom.append("_Data", JSON.stringify(""));
     dataFrom.append("Function_Name", "getAllBloodPressure");
-    this.callapi.bloodpressure(dataFrom).then((result)=>{
+    this.callapi.bloodpressure(dataFrom).then((result) => {
       this.getReport = result;
       console.log(result);
-      console.log(this.getReport); 
+      console.log(this.getReport);
     });
   }
 }

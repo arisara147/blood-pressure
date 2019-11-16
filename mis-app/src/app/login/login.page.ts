@@ -30,9 +30,6 @@ export class LoginPage implements OnInit {
     "nurse_passwd": ""
   }
 
-
-
-
   DataLoginLog = {
     "login_username": null,
     "login_password": null,
@@ -46,7 +43,11 @@ export class LoginPage implements OnInit {
   dataDoctor: any;
   dataNurse: any;
   dataPatient: any;
-  constructor(public navCtrl: NavController, public callApi: CallapiService, public router: Router) { }
+  constructor(
+    public navCtrl: NavController,
+    public callApi: CallapiService,
+    public router: Router
+    ) { }
 
   ngOnInit() {
   }
@@ -143,7 +144,7 @@ export class LoginPage implements OnInit {
         console.log("bye");
 
       }
-    })
+    });
 
   }
 
