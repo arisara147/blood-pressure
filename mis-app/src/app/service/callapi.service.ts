@@ -9,10 +9,11 @@ let apiUrl = "http://localhost:80/blood-pressure-api/";
 })
 export class CallapiService {
 
-  public getStatus: any;
-  public getid: any;
-  public user;
-  public pwd;
+  public getStatus: any = null;
+  public nameDoctor:any = null;
+  public getid: any = null;
+  public user = null;
+  public pwd = null;
   constructor(public http: HttpClient) { }
 
   bloodpressure(_obj) {

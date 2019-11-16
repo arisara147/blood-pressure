@@ -8,16 +8,20 @@
 </ion-header>
 
 <ion-content class="padding">
-  <div class="container">
+  <div class="container"  *ngIf="checkStatus != 2">
 <!--แพทย์และพยาบาลสามารถเพิ่ม ลบ แก้ไขตารางนัดหมาย-->
     <div class="body">
       <ion-list>
         <h4>ขื่อแพทย์</h4>
-        <ion-item>
+        <ion-item *ngIf="checkStatus != 1">
           <ion-icon slot="start" name="person"></ion-icon>
           <ion-select placeholder="เลือกชื่อแพทย์" [(ngModel)]="dataAppoint.dr_name" okText="Okay" cancelText="Dismiss">
             <ion-select-option *ngFor="let item of getDoctor" value="{{ item.dr_name }}">{{ item.dr_name }}</ion-select-option>
           </ion-select>
+        </ion-item>
+        <ion-item *ngIf="checkStatus == 1">
+          <ion-icon slot="start" name="person"></ion-icon>
+          <ion-label>{{ dataAppoint.dr_name }}</ion-label>
         </ion-item>
         <h4>วันที่</h4>
         <ion-item>
@@ -47,5 +51,21 @@
 
     <ion-button size="large" (click)="Addappoint()" expanded="block">บันทึก</ion-button>
     <ion-button size="large" expand="block" (click)="goToAppointDetail()">ดูข้อมูล</ion-button>
+  </div>
+
+  <div text-center *ngIf="checkStatus == 2">
+    <h4>รายการนัดหมาย</h4>
+    <div  *ngIf="listAppointPatient != null">
+      <ion-card *ngFor="let item of listAppointPatient">
+        <ion-card-content>
+          <p>ชื่อผู้ป่วย : {{ item.p_name }}</p>
+          <p>วันที่นัด : {{ item.app_date}}</p>
+          <p>เวลาที่นัด : {{ item.app_time }}</p>
+          <p>แพทย์ : {{ item.dr_name }}</p>
+          <p>รายละเอียด : {{ item.app_detail }}</p>
+          <p></p>
+        </ion-card-content>
+      </ion-card>
+    </div>
   </div>
 </ion-content>

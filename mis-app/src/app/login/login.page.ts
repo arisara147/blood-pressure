@@ -50,6 +50,14 @@ export class LoginPage implements OnInit {
     ) { }
 
   ngOnInit() {
+    
+  }
+
+  ionViewDidEnter(){
+    this.callApi.user = null;
+    this.callApi.getStatus = null;
+    this.callApi.getid = null;
+    this.callApi.pwd = null;
   }
 
   login() {
@@ -95,6 +103,7 @@ export class LoginPage implements OnInit {
         this.callApi.user = this.dataDoctor.dr_user;
         this.callApi.pwd = this.dataDoctor.dr_passwd;
         this.callApi.getStatus = "1";
+        this.callApi.nameDoctor = this.dataDoctor.dr_name;
         this.callApi.getid = this.dataDoctor.dr_id;
         this.loginLog(this.callApi.user, this.callApi.pwd, this.dataDoctor.dr_name, this.callApi.getStatus);
         this.router.navigate(['/doctor']);
