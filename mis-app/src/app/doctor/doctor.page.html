@@ -3,26 +3,74 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>แพทย์</ion-title>
+    <ion-title *ngIf="checkStatus == 3">แพทย์</ion-title>
+    <ion-title *ngIf="checkStatus == 1">ผู้ป่วย</ion-title>
   </ion-toolbar>
 </ion-header>
 
 
 <ion-content>
   <ion-searchbar (ionChange)="getItem($event)"></ion-searchbar>
-  <ion-list>
-    <ion-item>
-      <ion-label>
-        <ion-text>นายโกวิท โคตะวัน</ion-text>
-        <!--สำหรับเมื่อคลิกที่ชื่อหมอจะไปที่หน้าdoctor-detail เพื่อดูข้อมูลการติด่อ-->
-        <!--สำหรับแพทย์จะแสดงรายชื่อผู้ป่วยและดูประวัติส่วนตัวของผู้ป่วยได้-->
-        <!--สำหรับพยาบาลจะแสดงรายชื่อแพทย์และผู้ป่วย เพื่อไปที่หน้าแชท-->
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-label>
-        <ion-text>นางสาวอริศรา สาราษฎร์</ion-text>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <div *ngIf="checkStatus == 3">
+    <ion-col padding>
+      ชื่อแพทย์
+    </ion-col>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item *ngFor="let d of listDoctor">
+            <ion-label>{{d.dr_name}}</ion-label>
+            <ion-col size="3">
+              <ion-button (click)="detailDoctor(d.dr_id)">ดูข้อมูล</ion-button>
+            </ion-col>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </div>
+
+
+  <div *ngIf="checkStatus == 1">
+    <ion-col padding>
+      ชื่อผู้ป่วย
+    </ion-col>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item *ngFor="let p of listPateint">
+            <ion-label>{{p.p_name}}</ion-label>
+            <ion-col size="3">
+              <ion-button (click)="detailPateint(p.p_id)">ดูข้อมูล</ion-button>
+            </ion-col>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </div>
+
+  <div *ngIf="checkStatus == 2">
+
+    <ion-row>
+      <ion-col size="3">
+        <ion-button [routerLink]="['/patient-detail']">รายชื่อผู้ป่วย</ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col padding>
+        ชื่อแพทย์
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item *ngFor="let d of listDoctor">
+            <ion-label>{{d.dr_name}}</ion-label>
+            <ion-col size="3">
+              <ion-button (click)="detailDoctor(d.dr_id)">ดูข้อมูล</ion-button>
+            </ion-col>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-content>

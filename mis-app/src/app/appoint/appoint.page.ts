@@ -27,16 +27,31 @@ export class AppointPage implements OnInit {
   getPatient:any;
   dataDoctor:any[] = [];
   dataPatient:any[] = [];
+  listAppointPatient:any;
+  isReadonly:boolean;
+  checkStatus:any;
+  getdata = {
+    "getid":null
+  };
 
   constructor(private navCtrl: NavController,public callapi: CallapiService) {
       this.getalldoctor();
       this.getallpatient();
+      this.checkDoctor();
    }
 
   ngOnInit() {
     this.getalldoctor();
     this.getallpatient();
+    this.checkDoctor();
   }
+
+  ionViewDidEnter(){
+    this.getalldoctor();
+    this.getallpatient();
+    this.checkDoctor();
+  }
+
   goToAppointDetail() {
     this.navCtrl.navigateForward('/appoint-detail');
   }
@@ -103,6 +118,30 @@ export class AppointPage implements OnInit {
     this.dataAppoint.app_time = srTime[1];
     srTime = srTime[1].split(":",2);
     this.dataAppoint.app_time = srTime[0].toString() + ":" + srTime[1].toString();
+  }
+
+  checkDoctor(){
+    if (this.callapi.getStatus == "1") {
+      this.checkStatus = 1;
+      this.dataAppoint.dr_name = this.callapi.nameDoctor;
+      this.isReadonly = true;
+    }
+    if (this.callapi.getStatus == "3") {
+      this.checkStatus = 2;
+      this.getAppointBypid();
+    }
+  }
+
+  getAppointBypid(){
+    this.getdata.getid = this.callapi.getid;
+    let dataFrom = new FormData();
+    dataFrom.append("_Data", JSON.stringify(this.getdata));
+    dataFrom.append("Function_Name", "getAppointPatientById");
+    console.log(dataFrom);
+    this.callapi.appoint(dataFrom).then((it) => {
+      this.listAppointPatient = it;
+      console.log(this.listAppointPatient);
+    });
   }
 
 
