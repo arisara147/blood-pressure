@@ -7,40 +7,56 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="padding"><!--หน้านี้สำหรับแพทย์-->
+<ion-content class="padding">
+  <!--หน้านี้สำหรับแพทย์-->
   <div class="container">
     <!--<div class="header">
       </div>-->
     <div class="body">
-
       <ion-list>
         <h4>ขื่อแพทย์</h4>
-        <ion-item>
+        <ion-item *ngIf="checkStatus == 1">
           <ion-icon slot="start" name="person"></ion-icon>
-          <ion-input placeholder="ชื่อ-สกุล">
-          </ion-input>
+          <ion-label>{{ dataTreatment.dr_name }}</ion-label>
         </ion-item>
         <h4>วันที่</h4>
         <ion-item>
           <ion-icon slot="start" name="calendar"></ion-icon>
-          <ion-datetime placeholder="วันที่" displayFormat="D MMMM, YYYY"></ion-datetime>
+          <ion-datetime [(ngModel)]="dataTreatment.t_date" placeholder="วันที่" displayFormat="D MMMM, YYYY">
+          </ion-datetime>
         </ion-item>
-        <h4>รายละเอียด</h4>
+        <h4>การวินิจฉัย</h4>
         <ion-item>
           <ion-icon slot="start" name="clipboard"></ion-icon>
-          <ion-input placeholder="รายละเอียด"></ion-input>
+          <ion-input [(ngModel)]="dataTreatment.t_descrip" placeholder="การวินิจฉัย"></ion-input>
         </ion-item>
         <h4>ชื่อผู้ป่วย</h4>
         <ion-item>
           <ion-icon slot="start" name="person"></ion-icon>
-          <ion-input placeholder="ชื่อ-สกุล"></ion-input>
+          <ion-select [(ngModel)]="dataTreatment.p_name" placeholder="เลือกผู้ป่วย" okText="Done" cancelText="Cancel">
+            <ion-select-option *ngFor="let item of getPatient" value="{{ item.p_name }}"> {{ item.p_name }}
+            </ion-select-option>
+          </ion-select>
         </ion-item>
       </ion-list>
-
     </div>
-
-    <ion-button size="large" expanded="block">บันทึก</ion-button>
+    <ion-button size="large" expanded="block" (click)="AddTreatment()">บันทึก</ion-button>
     <ion-button size="large" expand="block" (click)="goToTeatmentDetail()">ประวัติการรักษา</ion-button>
+  </div>
+
+  <div text-center *ngIf="checkStatus == 2">
+    <h4>ประวัติการรักษา</h4>
+    <div *ngIf="listTreatmentPatient != null">
+      <ion-card *ngFor="let item of listTreatmentPatient">
+        <ion-card-content>
+          <p>ชื่อผู้ป่วย : {{ item.p_name }}</p>
+          <p>วันที่วินิจฉัย : {{ item.t_date}}</p>
+          <p>แพทย์ : {{ item.dr_name }}</p>
+          <p>การวินิจฉัย : {{ item.t_descrip }}</p>
+          <p></p>
+        </ion-card-content>
+      </ion-card>
+    </div>
   </div>
 
 </ion-content>

@@ -13,21 +13,13 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <ion-button size="large" expand="block" (click)="goToConsult()">
-          ปรึกษาแพทย์
-          <ion-icon slot="end" name="chatbubbles"></ion-icon>
-        </ion-button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
         <ion-button size="large" expand="block" (click)="goToBlood()">
           ความดันโลหิต
           <ion-icon slot="end" name="stats"></ion-icon>
         </ion-button>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row *ngIf="checkStatus == 1">
       <ion-col>
         <ion-button size="large" expand="block" (click)="goToTeatment()">
           การรักษา
@@ -36,4 +28,12 @@
       </ion-col>
     </ion-row>
   </ion-grid>
+  <ion-row *ngIf="checkStatus == 2 || checkStatus == 3">
+      <ion-col>
+        <ion-button size="large" expand="block" (click)="goToTreatmentDetail()">
+          ประวัติการรักษา
+          <ion-icon slot="end" name="list-box"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
 </ion-content>

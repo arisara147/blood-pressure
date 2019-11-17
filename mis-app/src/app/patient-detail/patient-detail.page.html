@@ -1,38 +1,34 @@
 <ion-header>
-    <ion-toolbar class="bar">
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title *ngIf="checkStatus == 3">แพทย์</ion-title>
-      <ion-title *ngIf="checkStatus == 1">ผู้ป่วย</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar class="bar">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>รายชื่อ</ion-title>
+  </ion-toolbar>
+</ion-header>
 
 
 <ion-content class="body">
-
-    <div *ngIf="checkStatus == 2" >
-  <ion-searchbar (ionChange)="getItem($event)"></ion-searchbar>
-
-  <ion-row>
+  <div *ngIf="checkStatus == 2">
+    <ion-row>
       <ion-col size="3">
-          <ion-button [routerLink]="['/doctor']">รายชื่อแพทย์</ion-button>
-        </ion-col>
+        <ion-button [routerLink]="['/doctor']">รายชื่อแพทย์</ion-button>
+      </ion-col>
     </ion-row>
     <ion-row>
       <ion-col padding>
-          ชื่อผู้ป่วย
+        <h3>ชื่อผู้ป่วย</h3>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
         <ion-list>
-            <ion-item *ngFor="let p of listPateint">
-                <ion-label>{{p.p_name}}</ion-label>
-                <ion-col size="3">
-                    <ion-button (click)="detailPatient(p.p_id)">ดูข้อมูล</ion-button>
-                  </ion-col>
-              </ion-item>
+          <ion-item *ngFor="let p of listPateint">
+            <ion-label>{{p.p_name}}</ion-label>
+            <ion-col size="3">
+              <ion-button (click)="detailPatient(p.p_id)">ดูข้อมูล</ion-button>
+            </ion-col>
+          </ion-item>
         </ion-list>
       </ion-col>
     </ion-row>

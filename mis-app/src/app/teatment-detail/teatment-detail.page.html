@@ -8,18 +8,37 @@
 </ion-header>
 
 <ion-content>
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title> <!--หน้าสำหรับผู้ป่วย พยาบาล และแพทย์เพื่อดูประวัติการรักษา-->
-        ข้อมูลการรักษา
-      </ion-card-title>
-    </ion-card-header>
+  <div *ngIf="checkStatus == 3 && listData2 != null">
+    <ion-card *ngFor="let item of listData2">
+      <ion-card-header>
+        <ion-card-title>
+          <!--หน้าสำหรับผู้ป่วย พยาบาล และแพทย์เพื่อดูประวัติการรักษา-->
+          ข้อมูลการรักษา
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+          <p>ชื่อแพทย์: {{item.dr_name}} </p>
+          <p>วันที่: {{item.t_date}} </p>
+          <p>การวินิจฉัย: {{item.t_descrip}} </p>
+          <p>ชื่อผู้ป่วย: {{item.p_name}} </p>
+        </ion-card-content>
+    </ion-card>
+  </div>
 
-    <ion-card-content>
-      ชื่อแพทย์: โกวิท โคตะวัน<br>
-      วันที่: 15 november 2019 <br>
-      รายละเอียด: มีความดันโลหิตสูงควรงดการออกกำกลังกายชั่วคราว<br>
-      ชื่อผู้ป่วย: ภคมน สุยคำไฮ
-    </ion-card-content>
-  </ion-card>
+  <div *ngIf="checkStatus != 3 && listData != null">
+    <ion-card *ngFor="let item of listData">
+      <ion-card-header>
+        <ion-card-title>
+          <!--หน้าสำหรับผู้ป่วย พยาบาล และแพทย์เพื่อดูประวัติการรักษา-->
+          ข้อมูลการรักษา
+        </ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>ชื่อแพทย์: {{item.dr_name}} </p>
+        <p>วันที่: {{item.t_date}} </p>
+        <p>การวินิจฉัย: {{item.t_descrip}} </p>
+        <p>ชื่อผู้ป่วย: {{item.p_name}} </p>
+      </ion-card-content>
+    </ion-card>
+  </div>
 </ion-content>

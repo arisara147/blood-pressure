@@ -47,13 +47,13 @@ export class LoginPage implements OnInit {
     public navCtrl: NavController,
     public callApi: CallapiService,
     public router: Router
-    ) { }
+  ) { }
 
   ngOnInit() {
-    
+
   }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     this.callApi.user = null;
     this.callApi.getStatus = null;
     this.callApi.getid = null;
@@ -106,7 +106,7 @@ export class LoginPage implements OnInit {
         this.callApi.nameDoctor = this.dataDoctor.dr_name;
         this.callApi.getid = this.dataDoctor.dr_id;
         this.loginLog(this.callApi.user, this.callApi.pwd, this.dataDoctor.dr_name, this.callApi.getStatus);
-        this.router.navigate(['/doctor']);
+        this.router.navigate(['/home']);
       } else {
         console.log("bye");
 
@@ -127,7 +127,7 @@ export class LoginPage implements OnInit {
         this.callApi.getid = this.dataNurse.nurse_id;
         this.callApi.getStatus = "2";
         this.loginLog(this.callApi.user, this.callApi.pwd, this.dataNurse.nurse_name, this.callApi.getStatus);
-        this.router.navigate(['/appoint']);
+        this.router.navigate(['/home']);
       } else {
         console.log("bye");
 

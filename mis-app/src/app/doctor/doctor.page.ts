@@ -1,7 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { DoctorService } from '../doctor.service';
-import { Doctor } from '../models/doctor';
-import { Subscription } from 'rxjs';
 import { LoadingController, NavController } from '@ionic/angular';
 import { CallapiService } from '../service/callapi.service';
 import { Router, Routes } from '@angular/router';
@@ -21,7 +19,7 @@ export class DoctorPage implements OnInit {
   listPateint: any;
 
   checkStatus: any;
-  nurseStatus:any;
+  nurseStatus: any;
 
   constructor(
     private doctorService: DoctorService,
@@ -68,7 +66,7 @@ export class DoctorPage implements OnInit {
     this.router.navigate(['/doctor-detail', { _id: id }]);
   }
 
-  detailPateint(id){
+  detailPateint(id) {
     this.router.navigate(['/patient-detail2', { _id: id }]);
   }
 

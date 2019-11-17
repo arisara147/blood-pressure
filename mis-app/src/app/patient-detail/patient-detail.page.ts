@@ -14,7 +14,7 @@ export class PatientDetailPage implements OnInit {
   checkStatus: any;
   nurseStatus: any;
 
-  constructor(public callApi: CallapiService,public router:Router) { }
+  constructor(public callApi: CallapiService, public router: Router) { }
 
   ngOnInit() {
     this.getPateintAll();
@@ -45,7 +45,7 @@ export class PatientDetailPage implements OnInit {
     });
   }
 
-  
+
   detailPatient(id) {
     this.router.navigate(['/patient-detail2', { _id: id }]);
   }

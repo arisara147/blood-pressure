@@ -10,25 +10,25 @@ import { CallapiService } from '../service/callapi.service';
 })
 export class PatientDetail2Page implements OnInit {
 
-  DataPatientId ={
-    "p_id":"",
+  DataPatientId = {
+    "p_id": "",
   }
 
-  dataPatientId:any = {};
+  dataPatientId: any = {};
 
-  constructor(  private activate: ActivatedRoute,
-    public callApi:CallapiService,
-    public router:Router) {
-      
+  constructor(private activate: ActivatedRoute,
+    public callApi: CallapiService,
+    public router: Router) {
+
     this.DataPatientId.p_id = this.activate.snapshot.paramMap.get('_id');
     console.log(this.DataPatientId.p_id);
     this.getDataPatientId();
-   }
+  }
 
   ngOnInit() {
   }
 
-  getDataPatientId(){
+  getDataPatientId() {
     let dataForm = new FormData();
     dataForm.append("_Data", JSON.stringify(this.DataPatientId));
     dataForm.append("Function_Name", "getProfilePatientById");

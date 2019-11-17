@@ -14,31 +14,31 @@ export class AppointPage implements OnInit {
   appoint: Appoint[];
   sub: Subscription;
   dataAppoint = {
-    "dr_id":null,
-    "dr_name":null,
-    "p_id":null,
-    "p_name":null,
-    "app_date":null,
-    "app_time":null,
-    "app_id":null,
-    "app_detail":null
+    "dr_id": null,
+    "dr_name": null,
+    "p_id": null,
+    "p_name": null,
+    "app_date": null,
+    "app_time": null,
+    "app_id": null,
+    "app_detail": null
   }
-  getDoctor:any;
-  getPatient:any;
-  dataDoctor:any[] = [];
-  dataPatient:any[] = [];
-  listAppointPatient:any;
-  isReadonly:boolean;
-  checkStatus:any;
+  getDoctor: any;
+  getPatient: any;
+  dataDoctor: any[] = [];
+  dataPatient: any[] = [];
+  listAppointPatient: any;
+  isReadonly: boolean;
+  checkStatus: any;
   getdata = {
-    "getid":null
+    "getid": null
   };
 
-  constructor(private navCtrl: NavController,public callapi: CallapiService) {
-      this.getalldoctor();
-      this.getallpatient();
-      this.checkDoctor();
-   }
+  constructor(private navCtrl: NavController, public callapi: CallapiService) {
+    this.getalldoctor();
+    this.getallpatient();
+    this.checkDoctor();
+  }
 
   ngOnInit() {
     this.getalldoctor();
@@ -46,7 +46,7 @@ export class AppointPage implements OnInit {
     this.checkDoctor();
   }
 
-  ionViewDidEnter(){
+  ionViewDidEnter() {
     this.getalldoctor();
     this.getallpatient();
     this.checkDoctor();
@@ -56,8 +56,8 @@ export class AppointPage implements OnInit {
     this.navCtrl.navigateForward('/appoint-detail');
   }
 
-  Addappoint(){
-    this.splitDateTime(this.dataAppoint.app_date,this.dataAppoint.app_time);
+  Addappoint() {
+    this.splitDateTime(this.dataAppoint.app_date, this.dataAppoint.app_time);
     var drid = this.dataDoctor.find(it => it.dr_name == this.dataAppoint.dr_name);
     console.log(drid.dr_id);
     this.dataAppoint.dr_id = drid.dr_id;
@@ -71,11 +71,11 @@ export class AppointPage implements OnInit {
     console.log(dataFrom);
     this.callapi.appoint(dataFrom).then((it) => {
       console.log("Ok add data appoint");
-      
+
     });
   }
 
-  getalldoctor(){
+  getalldoctor() {
     let dataFrom = new FormData();
     dataFrom.append("_Data", JSON.stringify(""));
     dataFrom.append("Function_Name", "getallDoctor");
@@ -83,15 +83,15 @@ export class AppointPage implements OnInit {
     this.callapi.Doctor(dataFrom).then((it) => {
       this.getDoctor = it;
       for (const key in this.getDoctor) {
-          this.dataDoctor[key] = this.getDoctor[key]
+        this.dataDoctor[key] = this.getDoctor[key]
       }
       console.log(this.getDoctor);
       console.log(this.dataDoctor);
-      
+
     });
   }
 
-  getallpatient(){
+  getallpatient() {
     let dataFrom = new FormData();
     dataFrom.append("_Data", JSON.stringify(""));
     dataFrom.append("Function_Name", "getallPatient");
@@ -100,27 +100,27 @@ export class AppointPage implements OnInit {
       this.getPatient = it;
       for (const key in this.getPatient) {
         this.dataPatient[key] = this.getPatient[key]
-    }
+      }
       console.log(this.getPatient);
       console.log(this.dataPatient);
-      
+
     });
   }
 
-  splitDateTime(date,time){
-    var getdate:string;
+  splitDateTime(date, time) {
+    var getdate: string;
     getdate = date;
     var spDate = getdate.split("T", 1);
     this.dataAppoint.app_date = spDate[0].toString();
-    var gettime:string;
+    var gettime: string;
     gettime = time;
     var srTime = gettime.split("T", 2);
     this.dataAppoint.app_time = srTime[1];
-    srTime = srTime[1].split(":",2);
+    srTime = srTime[1].split(":", 2);
     this.dataAppoint.app_time = srTime[0].toString() + ":" + srTime[1].toString();
   }
 
-  checkDoctor(){
+  checkDoctor() {
     if (this.callapi.getStatus == "1") {
       this.checkStatus = 1;
       this.dataAppoint.dr_name = this.callapi.nameDoctor;
@@ -132,7 +132,7 @@ export class AppointPage implements OnInit {
     }
   }
 
-  getAppointBypid(){
+  getAppointBypid() {
     this.getdata.getid = this.callapi.getid;
     let dataFrom = new FormData();
     dataFrom.append("_Data", JSON.stringify(this.getdata));
@@ -143,7 +143,4 @@ export class AppointPage implements OnInit {
       console.log(this.listAppointPatient);
     });
   }
-
-
-
 }
