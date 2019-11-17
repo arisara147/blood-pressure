@@ -15,18 +15,20 @@ export class ReportPage implements OnInit {
   sub: Subscription;
   getReport: any;
 
+  listData: any[] = [];
+
   constructor(
     private reportService: ReportService,
     private loadingController: LoadingController,
     private navCtrl: NavController,
-    public callapi:CallapiService
+    public callapi: CallapiService
   ) { }
 
   ngOnInit() {
     this.getAllReport();
   }
 
- async  getReportList() {
+  async  getReportList() {
     const loading = await this.loadingController.create({
       spinner: 'bubbles',
       message: 'กำลังโหลด..'
@@ -52,6 +54,11 @@ export class ReportPage implements OnInit {
     dataFrom.append("Function_Name", "getAllBloodPressure");
     this.callapi.bloodpressure(dataFrom).then((result) => {
       this.getReport = result;
+      for (const key in this.getReport) {
+        this.listData[key] = this.getReport[key];
+      }
+
+      this.listData.sort((a, b) => (b.rep_id) - (a.rep_id));
       console.log(result);
       console.log(this.getReport);
     });
