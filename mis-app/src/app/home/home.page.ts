@@ -17,7 +17,7 @@ export class HomePage implements OnInit {
     "t_id": null,
     "t_date": null,
     "t_descrip": null
-  }
+  };
 
   getDoctor: any;
   getPatient: any;
@@ -30,39 +30,48 @@ export class HomePage implements OnInit {
     "getid": null
   };
 
-  constructor(
-    private navCtrl: NavController, public callapi: CallapiService) {
+  constructor(private navCtrl: NavController, public callapi: CallapiService) {
     this.checkDoctor();
-   }
+  }
 
-    ngOnInit() {
-      this.checkDoctor();
-    }
+  ngOnInit() {
+    this.checkDoctor();
+  }
 
-    goToTreatmentDetail() {
-      this.navCtrl.navigateForward('/teatment-detail');
-    }
+  goToTreatmentDetail() {
+    this.navCtrl.navigateForward('/teatment-detail');
+  }
 
-    goToBlood() {
-      this.navCtrl.navigateForward('/blood-pressure');
-    }
-    goToTeatment() {
-      this.navCtrl.navigateForward('/teatment');
-    }
+  goToBlood() {
+    this.navCtrl.navigateForward('/blood-pressure');
+  }
+  goToTeatment() {
+    this.navCtrl.navigateForward('/teatment');
+  }
 
-    checkDoctor() {
-      if (this.callapi.getStatus == "1") {
-        this.checkStatus = 1;
-        this.dataTreatment.dr_name = this.callapi.nameDoctor;
-        this.isReadonly = true;
-      }
-      if (this.callapi.getStatus == "2") {
-        this.checkStatus = 2;
-        
-      }
-      if (this.callapi.getStatus == "3") {
-        this.checkStatus = 3;
-      }
+  checkDoctor() {
+    if (this.callapi.getStatus == "1") {
+      this.checkStatus = 1;
+      this.dataTreatment.dr_name = this.callapi.nameDoctor;
+      this.isReadonly = true;
     }
+    if (this.callapi.getStatus == "2") {
+      this.checkStatus = 2;
+
+    }
+    if (this.callapi.getStatus == "3") {
+      this.checkStatus = 3;
+    }
+  }
+
+doctorAndNusregotoreport(){
+  this.checkStatus = this.callapi.getStatus;
+  if (this.checkStatus == 1 || this.checkStatus == 2) {
+    this.navCtrl.navigateForward('/report');
+  } else {
+    this.navCtrl.navigateForward('/blood-pressure');
 
   }
+}
+
+}
