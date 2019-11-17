@@ -1,5 +1,6 @@
 import { NavController } from '@ionic/angular';
 import { Component } from '@angular/core';
+import { CallapiService } from '../service/callapi.service';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,10 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
+  checkStatus :any;
   constructor(
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    public callApi:CallapiService
   ) {}
 
   goToConsult() {
@@ -22,4 +25,15 @@ export class HomePage {
   goToTeatment() {
     this.navCtrl.navigateForward('/teatment');
   }
+
+  doctorAndNusregotoreport(){
+    this.checkStatus = this.callApi.getStatus;
+    if(this.checkStatus == 1 || this.checkStatus == 2){
+      this.navCtrl.navigateForward('/report');
+    }else{
+      this.navCtrl.navigateForward('/blood-pressure');
+
+    }
+  }
+
 }
