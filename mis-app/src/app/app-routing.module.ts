@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'teatment-detail', loadChildren: './teatment-detail/teatment-detail.module#TeatmentDetailPageModule' },
   { path: 'patient-detail', loadChildren: './patient-detail/patient-detail.module#PatientDetailPageModule' },
   { path: 'patient-detail2', loadChildren: './patient-detail2/patient-detail2.module#PatientDetail2PageModule' },
+  { path: 'appoint-edit', loadChildren: './appoint-edit/appoint-edit.module#AppointEditPageModule' },
 
 ];
 

@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>appointEdit</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="padding">
+  <div class="container">
+    <div class="body" *ngIf="getdata != null">
+      <ion-list>
+        <h4>ขื่อแพทย์</h4>
+        <ion-item>
+          <ion-icon slot="start" name="person"></ion-icon>
+          <ion-label>{{ getdata.dr_name }}</ion-label>
+        </ion-item>
+        <h4>วันที่</h4>
+        <ion-item>
+          <ion-icon slot="start" name="calendar"></ion-icon>
+          <ion-datetime [(ngModel)]="getdata.app_date" placeholder="วันที่" displayFormat="D MMMM, YYYY"></ion-datetime>
+        </ion-item>
+        <h4>เวลา</h4>
+        <ion-item>
+          <ion-icon slot="start" name="time"></ion-icon>
+          <ion-datetime [(ngModel)]="getdata.app_time" placeholder="วันที่" displayFormat="HH:mm"></ion-datetime>
+        </ion-item>
+        <h4>รายละเอียด</h4>
+        <ion-item>
+          <ion-icon slot="start" name="clipboard"></ion-icon>
+          <ion-input [(ngModel)]="getdata.app_detail" placeholder="รายละเอียด"></ion-input>
+        </ion-item>
+        <h4>ชื่อผู้ป่วย</h4>
+        <ion-item>
+          <ion-icon slot="start" name="person"></ion-icon>
+          <ion-label>{{ getdata.p_name }}</ion-label>
+        </ion-item>
+      </ion-list>
+      <br><br>
+      <ion-button (click)="editAppoint()">บันทึก</ion-button>
+    </div>
+  </div>
+</ion-content>

@@ -8,25 +8,24 @@
 </ion-header>
 <!--หน้านี้สำหรับแพทย์ พยาบาล ส่วนผู้ป่วยสามารถดูได้อย่างเดียว-->
 <ion-content>
-  <ion-card class="container">
+  <ion-card *ngFor="let item of listData" class="container">
     <ion-card-header>
       <ion-card-title>
         นัดตรวจ
       </ion-card-title>
     </ion-card-header>
     <ion-card-content>
-      แพทย์ : โกวิท โคตะวัน<br>
-      วันที่: 15 November 2019<br>
-      เวลา: 09:30<br>
-      รายละเอียด: ติดตามอาการ<br>
-      ชื่อผู้ป่วย: ภคมน สุยคำไฮ
+      <p>แพทย์ : {{ item.dr_name }}</p>
+      <p>วันที่: {{ item.app_date }}</p>
+      <p>เวลา: {{ item.app_time }}</p>
+      <p>รายละเอียด: {{ item.app_detail }}</p>
+      <p>ชื่อผู้ป่วย: {{ item.p_name }}</p>
     </ion-card-content>
     <ion-col>
-      <ion-button color="warning">แก้ไข<ion-icon name="create"></ion-icon></ion-button>
-      
+      <ion-button (click)="goEditappoint(item.app_id)" color="warning">แก้ไข<ion-icon name="create"></ion-icon></ion-button>     
     </ion-col>
     <ion-col>
-      <ion-button color="danger">ยกเลิก <ion-icon name="trash"></ion-icon></ion-button>
+      <ion-button (click)="cencalAppoint(item.app_id)" color="danger">ยกเลิก <ion-icon name="trash"></ion-icon></ion-button>
       
     </ion-col>
   </ion-card>

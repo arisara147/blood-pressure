@@ -77,7 +77,7 @@ export class BloodPressurePage implements OnInit {
     this.date = this.dd + "/" + this.mm + "/" + this.yyyy;
     console.log(this.date);
     this.time = this.hour + ":" + this.minus;
-    this.DataBloodPressure.p_id = "test";
+    this.DataBloodPressure.p_id = this.callapi.getid;
     this.DataBloodPressure.rep_id = 0;
     this.DataBloodPressure.rep_date = this.date;
     this.DataBloodPressure.rep_time = this.time;
